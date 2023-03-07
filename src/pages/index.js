@@ -31,8 +31,8 @@ export default function Home({ propertiesForSale }) {
        <Banner 
        purpose={'BUY A HOME'}
        title1="Find, Buy & Own Your"
-       title="Dream Home"
-       desc1=" Explore from Apartments, land, builder floors,"
+       title2="Dream Home"
+       desc1=" Explore from Single Family Homes, Condos, land,"
        desc2=" villas and more"
        buttonText="Explore Buying"
        linkName="/search?purpose-for-sale"
