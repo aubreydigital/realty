@@ -6,10 +6,10 @@ import { FiKey } from 'react-icons/fi';
 import damian from "../assets/images/damian.jpeg"
 import Image from 'next/image'
 const Navbar = () => {
-    return <><Flex p="2" borderBottom="1px" backgroundColor="gray.300" borderRadius="6px" borderColor="gray.100">
+    return <><Flex p="2" borderBottom="1px" borderRadius="6px" borderColor="gray.100">
         <Box m="auto" fontSize="3xl" color="blue.400" fontWeight="bold">
-            <Flex flexWrap="wrap" p="5px" alignItems="center">
-            <Box paddingRight="10px"><Image src={damian} alt="Damian Einbinder Realty Las Vegas Valley Henderson" height="200" width="100"></Image></Box>
+            <Flex p="5" flexWrap="wrap" alignItems="center">
+            <Flex paddingRight="10px"><Image src={damian} alt="Damian Einbinder Realty Las Vegas Valley Henderson" height="200" width="auto"></Image></Flex>
             <Link href="/">Damian Einbinder Realty</Link>
             </Flex>
         </Box>

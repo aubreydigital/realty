@@ -11,7 +11,7 @@ const PropertyDetails = ({ propertyDetails: {price, rentFrequency, rooms, title,
     <Box maxWidth="1000px" margin="auto" p="4">
         {photos && <ImageScrollbar data={photos} />}
         <Box w="full" p="6">
-        <Flex paddingTop="2" alignItems="center" justifyContent="space-between">
+        <Flex paddingTop="2" alignItems="center">
         <Flex alignItems="center">
             <Box paddingRight="3" color="green.400">{isVerified && <GoVerified />}</Box>
             <Text fontWeight="bold" fontSize="lg">AED {price}{rentFrequency && `/${rentFrequency}`}</Text>
@@ -20,7 +20,7 @@ const PropertyDetails = ({ propertyDetails: {price, rentFrequency, rooms, title,
             <Avatar size="sm" src={agency?.logo?.url} />
         </Box>
     </Flex>
-    <Flex alignItems="center" p="1" justifyContent="space-between" w="250px" color="blue.400">
+    <Flex alignItems="center" p="1" w="250px" color="blue.400">
         {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
     </Flex>
     <Box marginTop="2">
@@ -29,7 +29,7 @@ const PropertyDetails = ({ propertyDetails: {price, rentFrequency, rooms, title,
     </Text>
     <Text lineHeight="2" color="gray.600">{description}</Text>
     </Box>
-    <Flex flexWrap="wrap" textTransform="uppercase" justifyContext="space-between">
+    <Flex flexWrap="wrap" textTransform="uppercase" >
         <Flex justifyContent="space-between" w="400px" borderBottom="1px" borderColor="gray.100" p="3">
             <Text>Type</Text>
             <Text fontWeight="bold">{type}</Text>
