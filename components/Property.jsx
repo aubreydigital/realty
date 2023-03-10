@@ -8,12 +8,14 @@ import millify from 'millify';
 
 import defaultImage from "../assets/images/house.jpeg"
 
+const loadImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=="
+
 const Property = ({ property: {coverPhoto,price, rooms, rentFrequency, title, baths, area, agency, isVerified, externalID} }) => {
   return (
     <Link href={`/property/${externalID}`} passHref>
         <Flex flexWrap="wrap" w="420px" p="5" paddingTop="0" justifyContent="flex-start" cursor="pointer">
             <Box>
-                <Image src={coverPhoto ? coverPhoto.url : defaultImage} width="400" height="260" alt="title" />
+                <Image placeholder="blur" blurDataURL={loadImg} src={coverPhoto ? coverPhoto.url : defaultImage} width="400" height="260" alt="title" />
             </Box>
             <Box w="full">
                 <Flex paddingTop="2" alignItems="center" justifyContent="space-between">
