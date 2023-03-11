@@ -8,7 +8,7 @@ import millify from 'millify';
 
 import defaultImage from "../assets/images/house.jpeg"
 
-const loadImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=="
+const loadImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0MTauBwACmAErvsgWZwAAAABJRU5ErkJggg=="
 
 const Property = ({ property: {coverPhoto,price, rooms, rentFrequency, title, baths, area, agency, isVerified, externalID} }) => {
   return (
