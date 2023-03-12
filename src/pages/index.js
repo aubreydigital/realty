@@ -12,7 +12,7 @@ const searchHomes = () => {
 }
 
 const Banner = ({ purpose,imageUrl, bgval, title1, desc1, linkName, buttonText }) => (
-  <Flex backgroundImage={imageUrl} direction="column" bgSize="cover" flexWrap="wrap" marginX="auto" justifyContent="center" textAlign="center" alignItems="center" m="10" width="100vw" height="600px">
+  <Flex backgroundImage={imageUrl} backgroundPosition="center" backgroundAttachment="fixed" backgroundSize="cover" direction="column" bgSize="cover" flexWrap="wrap" marginX="auto" justifyContent="center" textAlign="center" alignItems="center" m="10" width="100vw" height="600px">
     {/* <Image src={imageUrl} width={500} height={300} alt="banner" /> */}
     <Box p="5">
       <Text fontSize={{base: '0', lg: '20px'}} fontWeight="bold">{title1}</Text>
@@ -47,7 +47,7 @@ export default function Home({ propertiesForSale }) {
     <Box>
     {/* <ChakraProvider> */}
     
-    <Flex flexWrap="wrap" >
+    <Flex flexWrap="wrap">
 
        <Banner 
        bgval="blue"
