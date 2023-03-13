@@ -1,9 +1,12 @@
+import {useEffect, useState} from 'react'
+import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
 import Property from 'components/Property';
 import { Flex, Box, Center, Text, Menu, MenuButton, MenuList, MenuGroup, MenuItem, MenuDivider, Button, Stack, Input, InputGroup, InputRightElement, Spacer } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react'
-import { baseUrl, fetchAPI } from '../../utils/fetchAPI'
+// import { baseUrl, fetchAPI } from '../../utils/fetchAPI'
+import { fetchData } from '../../utils/fetchATTOM'
 import { BsSearch } from 'react-icons/bs';
 import splash from '../../assets/images/splash.png'
 
@@ -11,8 +14,12 @@ const searchHomes = () => {
   alert('Hol up');
 }
 
+
+
+const communities = ['Las Vegas', 'Henderson', 'Summerlin', 'Aliante', 'Anthem', 'Green Valley Ranch', 'Lake Las Vegas', 'Macdonald Ranch', 'Mountains Edge', 'North Las Vegas', 'Seven Hills', 'Silverado Ranch', 'Southern Highlands']
+
 const Banner = ({ purpose,imageUrl, bgval, title1, desc1, linkName, buttonText }) => (
-  <Flex backgroundImage={imageUrl} backgroundPosition="center" backgroundAttachment="fixed" backgroundSize="cover" direction="column" bgSize="cover" flexWrap="wrap" marginX="auto" justifyContent="center" textAlign="center" alignItems="center" m="10" width="100vw" height="600px">
+  <Flex backgroundImage={imageUrl} minWidth="100%" backgroundSize="cover" backgroundPosition="center" backgroundAttachment="fixed" direction="column" backgroundRepeat="no-repeat" flexWrap="wrap" marginX="auto" justifyContent="center" textAlign="center" alignItems="center" width="100vw" height="600px">
     {/* <Image src={imageUrl} width={500} height={300} alt="banner" /> */}
     <Box p="5">
       <Text fontSize={{base: '0', lg: '20px'}} fontWeight="bold">{title1}</Text>
@@ -40,9 +47,23 @@ const Banner = ({ purpose,imageUrl, bgval, title1, desc1, linkName, buttonText }
   </Flex>
 )
 
+const community = (name) => {
+  let comName = name
+  name = name.replace(/\s/g, '');
+  return (
+  
+  <Box width="200px" p="4" color="rgba(0,100,0,0.7)" textAlign="center"><Link color="green" alt={comName} href={`/communities/${name}`}>{comName}</Link></Box>
+)}
 
-export default function Home({ propertiesForSale }) {
-  console.log(propertiesForSale)
+export default function Home() {
+  // const [data, setData] = useState([]);
+
+  // useEffect(() => {
+  //   fetchData('https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/address?postalcode=89149&page=1&pagesize=100').then((response) => {
+  //   setData(response.property);
+  //   });
+  // }, []);
+
   return (
     <Box>
     {/* <ChakraProvider> */}
@@ -59,64 +80,46 @@ export default function Home({ propertiesForSale }) {
        linkName="/search?purpose-for-sale"
        imageUrl="https://3553780384f3502a3f9a-950c98ad79f09df6d37b35f914ae4e93.ssl.cf1.rackcdn.com/Las-Vegas-Luxury-Residential-Architecture.jpg" 
        /></Flex>
-       <Flex justifyContent="center">
+       <Flex justifyContent="center" backgroundColor="rgba(200,200,200,0.2)">
         <h2 style={{ fontSize: '1.8em', fontWeight: 'bold'}}>Communities</h2>
         </Flex>
-       <Flex flexWrap="wrap" justifyContent="center">
+       <Flex flexWrap="wrap"  backgroundColor="rgba(200,200,200,0.2)" justifyContent="center">
         {/* {propertiesForSale.map((property) => <Property property={property} key={property.id} />)} */}
-        <Flex flexWrap="wrap" direction='column' width="100" alignItems="center" justifyContent="space-between">
+        <Flex flexWrap="wrap" direction='column' width="100%" alignItems="center" justifyContent="space-between">
     
-          <Flex justifyContent="center" alignItems="center">
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/las-vegas-homes" title="View Las Vegas, NV homes for sale.">Las Vegas</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/henderson-homes" title="View Henderson, NV homes for sale.">Henderson</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/summerlin-homes" title="View Summerlin, NV homes for sale.">Summerlin</a></Box>
-            </Flex>
-            <Flex>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/aliante-homes" title="View Aliante, NV homes for sale.">Aliante</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/anthem-homes" title="View Anthem, NV homes for sale.">Anthem</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/green-valley-homes" title="View Green Valley, NV homes for sale.">Green Valley</a></Box>
-              
-            </Flex><Flex>
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/green-valley-ranch-homes" title="View Green Valley Ranch, NV homes for sale.">Green Valley Ranch</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/lake-las-vegas-homes" title="View Lake Las Vegas, NV homes for sale.">Lake Las Vegas</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/macdonald-ranch-homes" title="View Macdonald Ranch, NV homes for sale.">Macdonald Ranch</a></Box>
-            </Flex>
-            <Flex>
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/mountains-edge-homes" title="View Mountains Edge, NV homes for sale.">Mountains Edge</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/north-las-vegas-homes" title="View North Las Vegas, NV homes for sale.">North Las Vegas</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/seven-hills-homes" title="View Seven Hills, NV homes for sale.">Seven Hills</a></Box>
-            </Flex>
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/silverado-ranch-homes" title="View Silverado Ranch, NV homes for sale.">Silverado Ranch</a></Box>
-              
-            <Box width="25vw" color="rgba(0,100,0,0.7)" textAlign="center" class="communities_text"><a href="/NV/southern-highlands-homes" title="View Southern Highlands, NV homes for sale.">Southern Highlands</a></Box>
+          <Flex justifyContent="center" flexWrap="wrap" alignItems="center">
+         {communities.map((com) => community(com))}   
               
         
 
     
         </Flex>
-       </Flex>
+       </Flex></Flex>
+       <Flex justifyContent="center" backgroundColor="rgba(200,200,200,0.2)">
+        <h2 style={{ fontSize: '1.8em', fontWeight: 'bold'}}>Featured Listings</h2>
+        </Flex>
+       <Flex flexWrap="wrap"  backgroundColor="rgba(200,200,200,0.2)" justifyContent="center">
+        {/* {propertiesForSale.map((property) => <Property property={property} key={property.id} />)} */}
+        <Flex flexWrap="wrap" direction='column' width="100%" alignItems="center" justifyContent="space-between">
+    
+          <Flex justifyContent="center" flexWrap="wrap" alignItems="center">
+         {/* {data.map((property) => <p>{property.address.line1}<br />{property.address.line2}</p>)}    */}
+              {/* {data.map((p) => <><Link href={`/${p.address.line1}`}>{p.address.line1}</Link></>)}
+
+     */}
+        </Flex>
+       </Flex></Flex>
     {/* </ChakraProvider> */}
 </Box>
   )
 }
 
-export async function getStaticProps() {
-  const propertyForSale = await fetchAPI(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`)
+// export async function getStaticProps() {
+//   const data = await fetchATTOM(`https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/address?postalcode=89149&page=1&pagesize=100`)
 
-  return {
-    props: {
-      propertiesForSale: propertyForSale?.hits
-    }
-  }
-
-}
-
+//   return {
+//     props: {
+//       listings: listing?.hits
+//     }
+//   }
+// }

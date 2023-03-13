@@ -7,8 +7,8 @@ import { FiKey } from 'react-icons/fi';
 import damian from "../assets/images/damian.jpeg"
 import Image from 'next/image'
 const Navbar = () => {
-    return <><Flex p="2" borderBottom="1px" borderRadius="6px" borderColor="gray.100">
-        <Box m="auto" fontSize={{base: '30px', lg: '44px'}} color="blue.400" fontWeight="600"
+    return <><Flex p="2" backgroundColor="rgba(200,200,200,0.2)" borderBottom="1px" borderRadius="6px" borderColor="gray.100">
+        <Box m="auto" fontSize={{base: '20px', lg: '44px'}} color="#000" fontWeight="600"
     >
             <Flex p="2" flexWrap="wrap" direction="column">
             {/* <Flex marginX="auto" p="30"><Image src={damian} alt="Damian Einbinder Realty Las Vegas Valley Henderson" height="200" width="auto"></Image></Flex> */}
@@ -19,7 +19,7 @@ const Navbar = () => {
                 <Flex paddingX="10px"><Link href={'https://www.facebook.com/DamianEinbinderRealtor'} target="blank"><FaFacebook /></Link></Flex>
                 <Flex paddingX="10px"><Link href={'https://www.instagram.com/bigmoneyrealty/'} target="blank"><div><FaInstagram /></div></Link></Flex>
                 <Flex paddingX="10px"><Link href={'mailto: deinbinder@easystreetrealty.com'}><div><FaEnvelope /></div></Link></Flex><br />
-                <Flex paddingX="10px" flexWrap="nowrap" mt="-2"><Link href={'tel:7023710950'}> <div>(702) 371-0950</div></Link></Flex>
+                <Flex paddingX="10px" fontSize={{base: '16px', lg: '30px'}} flexWrap="nowrap" mt="-2"><Link href={'tel:7023710950'}> <div>(702) 371-0950</div></Link></Flex>
 
                 </Flex>
             </Flex>
@@ -27,10 +27,12 @@ const Navbar = () => {
         <Spacer />
         <Box>
             <Menu>
-                <MenuButton as={IconButton} icon={<FcMenu />} px={4}
-    py={4}
+                <MenuButton as={IconButton} icon={<FcMenu />}
+    p={6}
+    px={4}
     mr={2}
     mt={7}
+    fontSize="2xl"
     transition="all 0.2s"
     borderRadius="md"
     borderWidth="1px"
