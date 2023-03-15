@@ -38,6 +38,8 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Roboto&display=swap');
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

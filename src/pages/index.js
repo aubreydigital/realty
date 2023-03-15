@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Property from 'components/Property';
 import { Flex, Box, Center, Text, Menu, MenuButton, MenuList, MenuGroup, MenuItem, MenuDivider, Button, Stack, Input, InputGroup, InputRightElement, Spacer } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react'
-// import { baseUrl, fetchAPI } from '../../utils/fetchAPI'
-import { fetchData } from '../../utils/fetchATTOM'
+import { baseUrl, fetchAPI } from '../../utils/fetchAPI'
 import { BsSearch } from 'react-icons/bs';
 import splash from '../../assets/images/splash.png'
 
@@ -55,15 +54,7 @@ const community = (name) => {
   <Box width="200px" p="4" color="rgba(0,100,0,0.7)" textAlign="center"><Link color="green" alt={comName} href={`/communities/${name}`}>{comName}</Link></Box>
 )}
 
-export default function Home() {
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   fetchData('https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/address?postalcode=89149&page=1&pagesize=100').then((response) => {
-  //   setData(response.property);
-  //   });
-  // }, []);
-
+export default function Home({ propertiesForSale }) {
   return (
     <Box>
     {/* <ChakraProvider> */}
@@ -99,14 +90,12 @@ export default function Home() {
         <h2 style={{ fontSize: '1.8em', fontWeight: 'bold'}}>Featured Listings</h2>
         </Flex>
        <Flex flexWrap="wrap"  backgroundColor="rgba(200,200,200,0.2)" justifyContent="center">
-        {/* {propertiesForSale.map((property) => <Property property={property} key={property.id} />)} */}
+        {propertiesForSale.map((property) => <Property property={property} id={property.property_id} key={property.property_id} />)}
         <Flex flexWrap="wrap" direction='column' width="100%" alignItems="center" justifyContent="space-between">
     
           <Flex justifyContent="center" flexWrap="wrap" alignItems="center">
          {/* {data.map((property) => <p>{property.address.line1}<br />{property.address.line2}</p>)}    */}
-              {/* {data.map((p) => <><Link href={`/${p.address.line1}`}>{p.address.line1}</Link></>)}
-
-     */}
+              {/* {data.map((p) => <><Link href={`/${p.address.line1}`}>{p.address.line1}</Link></>)} */}
         </Flex>
        </Flex></Flex>
     {/* </ChakraProvider> */}
@@ -114,12 +103,11 @@ export default function Home() {
   )
 }
 
-// export async function getStaticProps() {
-//   const data = await fetchATTOM(`https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/address?postalcode=89149&page=1&pagesize=100`)
-
-//   return {
-//     props: {
-//       listings: listing?.hits
-//     }
-//   }
-// }
+export async function getStaticProps() {
+  const propertyForSale = await fetchAPI(`${baseUrl}/properties/list-for-sale?state_code=NV&city=Las Vegas&limit=2`)
+  return {
+    props: {
+      propertiesForSale: propertyForSale.listings,
+    },
+  };
+}
