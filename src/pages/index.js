@@ -107,7 +107,7 @@ export async function getStaticProps() {
   const propertyForSale = await fetchAPI(`${baseUrl}/properties/list-for-sale?state_code=NV&city=Las Vegas&limit=2`)
   return {
     props: {
-      propertiesForSale: propertyForSale.listings,
+      propertiesForSale: propertyForSale?.listings,
     },
   };
 }
