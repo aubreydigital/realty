@@ -71,11 +71,10 @@ export default function Home({ propertiesForSale }) {
        linkName="/search?purpose-for-sale"
        imageUrl="https://3553780384f3502a3f9a-950c98ad79f09df6d37b35f914ae4e93.ssl.cf1.rackcdn.com/Las-Vegas-Luxury-Residential-Architecture.jpg" 
        /></Flex>
-       <Flex justifyContent="center" backgroundColor="rgba(200,200,200,0.2)">
+       <Flex justifyContent="center" pt="5" backgroundColor="rgba(200,200,200,0.2)">
         <h2 style={{ fontSize: '1.8em', fontWeight: 'bold'}}>Communities</h2>
         </Flex>
        <Flex flexWrap="wrap"  backgroundColor="rgba(200,200,200,0.2)" justifyContent="center">
-        {/* {propertiesForSale.map((property) => <Property property={property} key={property.id} />)} */}
         <Flex flexWrap="wrap" direction='column' width="100%" alignItems="center" justifyContent="space-between">
     
           <Flex justifyContent="center" flexWrap="wrap" alignItems="center">
@@ -90,12 +89,29 @@ export default function Home({ propertiesForSale }) {
         <h2 style={{ fontSize: '1.8em', fontWeight: 'bold'}}>Featured Listings</h2>
         </Flex>
        <Flex flexWrap="wrap"  backgroundColor="rgba(200,200,200,0.2)" justifyContent="center">
-        {propertiesForSale.map((property) => <Property property={property} id={property.property_id} key={property.property_id} />)}
+       {propertiesForSale.map((property) => <Property property={property} key={property.id} />)}
+        
+        
         <Flex flexWrap="wrap" direction='column' width="100%" alignItems="center" justifyContent="space-between">
     
           <Flex justifyContent="center" flexWrap="wrap" alignItems="center">
          {/* {data.map((property) => <p>{property.address.line1}<br />{property.address.line2}</p>)}    */}
               {/* {data.map((p) => <><Link href={`/${p.address.line1}`}>{p.address.line1}</Link></>)} */}
+        </Flex>
+       </Flex></Flex>
+       <Flex justifyContent="center" pt="5" backgroundColor="rgba(200,200,200,0.2)">
+        <h2 style={{ fontSize: '1.8em', fontWeight: 'bold'}}>Neighborhoods</h2>
+        </Flex>
+       <Flex flexWrap="wrap"  backgroundColor="rgba(200,200,200,0.2)" justifyContent="center">
+        {/* {propertiesForSale.map((property) => <Property property={property} key={property.id} />)} */}
+        <Flex flexWrap="wrap" direction='column' width="100%" alignItems="center" justifyContent="space-between">
+    
+          <Flex justifyContent="center" flexWrap="wrap" alignItems="center">
+         {communities.map((com) => community(com))}   
+              
+        
+
+    
         </Flex>
        </Flex></Flex>
     {/* </ChakraProvider> */}
@@ -105,9 +121,12 @@ export default function Home({ propertiesForSale }) {
 
 export async function getStaticProps() {
   const propertyForSale = await fetchAPI(`${baseUrl}/properties/list-for-sale?state_code=NV&city=Las Vegas&limit=2`)
+  
+  // const details = await fetchAPI(`${baseUrl}/properties/v3/detail/?property_id=${property.property_id}`)})
+
   return {
     props: {
-      propertiesForSale: propertyForSale?.listings,
+      propertiesForSale: propertyForSale?.listings
     },
   };
 }

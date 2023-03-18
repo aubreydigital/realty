@@ -24,7 +24,7 @@ const PropertyDetails = ({ propertyDetails}) => {
         </Flex>
         </Flex>
         </Box>
-            <Avatar size="sm" src={propertyDetails.data.home.advertisers[0].photo.href} />
+            {/* <Avatar size="sm" src={propertyDetails.data.home.advertisers[0].photo.href} /> */}
             {propertyDetails.data.home.advertisers.map((a) => `${a.name}`)}
     <Flex alignItems="center" p="1" w="250px" color="blue.400">
         {propertyDetails.data.home.description.beds} <FaBed /> | {propertyDetails.data.home.description.baths} <FaBath /> | {propertyDetails.data.home.description.sqft} <BsGridFill />
