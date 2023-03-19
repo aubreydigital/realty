@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
         <Head>
             <title>Damian Einbinder Realty</title>
         </Head>
-        <Box maxWidth="1280px" m="auto">
+        <Box maxWidth="1440px" m="auto">
             <header>
                 <Navbar />
             </header>

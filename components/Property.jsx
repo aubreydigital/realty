@@ -40,22 +40,22 @@ propertyDeets();
                     </Box>
                     </Box>
                 </Flex>
-        <Flex flexWrap="wrap" overflow="hidden" border="1px solid #333" boxShadow="0px 30px 75px #333" borderRadius="7px" backgroundColor="white" w="530px" h="380px" mx="2" p="4" cursor="pointer">
+        <Flex flexWrap="wrap" overflow="hidden" border="1px solid #333" boxShadow="0px 30px 75px #333" borderRadius="7px" backgroundColor="white" w={{base: '450px', lg: '530px'}} h="380px" mx="2" p="4" cursor="pointer">
             <Box p="3" overflow="hidden" float="left">
                 <Image placeholder="blur" blurDataURL={photo} src={photo ? photo: defaultImage} width="300" height="400" alt="title" />
                </Box><Box float="right" p="2"> 
-               <Box pb="3">
+               <Box opacity={{base: 0, lg: 1}} pb="3">
                 <Image placeholder="blur" blurDataURL={smPhoto1} src={smPhoto1 ? smPhoto1: defaultImage} width="150" height="150" alt="title" />
                 </Box>
-                <Box>
+                <Box opacity={{base: 0, lg: 1}}>
                 <Image placeholder="blur" p="2" blurDataURL={smPhoto2} src={smPhoto2 ? smPhoto2: defaultImage} width="150" height="150" alt="title" />
                 </Box>
              </Box>
                 
-                <Box position="absolute" fontFamily='Ubuntu,Verdana,Arial,Helvetica,sans-serif' fontSize=".9em" width="400px" overflow="hidden" top="75%" color="#333">
-                    <Text display="inline" color="rgba(50,150,50,1)">&nbsp;Zipcode: </Text>{location}<br /> 
-                    <Text display="inline" px='1' color="rgba(50,150,50,1)">Bedrooms: </Text> {beds}<br/>
-                    <Text px='1' flexWrap="wrap" color="rgba(50,150,50,1)">Description:  </Text>&nbsp;{details.length > 75 ? details.substring(0, 75) + '...' : details}<br /> 
+                <Box mt={{base: '-3em', lg: 0}} fontFamily='Ubuntu,Verdana,Arial,Helvetica,sans-serif' fontSize=".9em" width="400px" overflow="hidden" color="#333">
+                    <Text display="inline" fontWeight="bold" color="rgba(130,200,130,1)">&nbsp;Zipcode: </Text>{location}<br /> 
+                    <Text display="inline" fontWeight="bold" px='1' color="rgba(130,200,130,1)">Bedrooms: </Text> {beds}<br/>
+                    <Text px='1' fontWeight="bold" flexWrap="wrap" color="rgba(130,200,130,1)">Description:  </Text>&nbsp;{details.length > 75 ? details.substring(0, 75) + '...' : details}<br /> 
               
                 
                

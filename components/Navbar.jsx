@@ -46,9 +46,9 @@ const Navbar = () => {
                     <Link href="/" passHref>
                         <MenuItem icon={<FcAbout />}>About</MenuItem>
                     </Link>
-                    <Link href="/search" passHref>
+                    {/* <Link href="/search" passHref>
                         <MenuItem icon={<BsSearch />}>Search Homes</MenuItem>
-                    </Link>
+                    </Link> */}
                     <Link href="/" passHref>
                         <MenuItem icon={<FcHome />}>Testimonials</MenuItem>
                     </Link>
